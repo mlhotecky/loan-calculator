@@ -1,15 +1,19 @@
-import {GET_CONFIGURATION} from "../../constants";
+import {createSlice} from "@reduxjs/toolkit";
 
-const initialState = {
-    configurationObject: {}
-}
-
-export const configurationReducer = (state = initialState, {type, payload}) => {
-    switch (type) {
-        case GET_CONFIGURATION:
-            return {
-                ...state,
-                configurationObject: payload
-            }
+const conf = createSlice({
+    name: "configurationReducer",
+    initialState: {
+        configurationStatus: null,
+        configurationObject: {}
+    },
+    reducers: {
+        getConfStatus: (state, action) => {
+            state.configurationStatus = action.payload;
+        },
+        getConfiguration: (state, action) => {
+            state.configurationObject = action.payload;
+        }
     }
-}
+})
+export const {getConfStatus, getConfiguration} = conf.actions;
+export default conf.reducer;

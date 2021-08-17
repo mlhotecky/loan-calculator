@@ -1,15 +1,20 @@
-import {GET_LOAN} from "../../constants";
+import {createSlice} from "@reduxjs/toolkit";
 
-const initialState = {
-    loanData: {}
-}
-
-export const loanReducer = (state = initialState, {type, payload}) => {
-    switch (type) {
-        case GET_LOAN:
-            return {
-                ...state,
-                loanData: payload
-            }
+const loan = createSlice({
+    name: "loanReducer",
+    initialState: {
+        loanStatus: null,
+        loanObject: {}
+    },
+    reducers: {
+        getLoanStatus: (state, action) => {
+            state.loanStatus = action.payload
+        },
+        getLoan: (state, action) => {
+            state.loanObject = action.payload
+        }
     }
-}
+})
+
+export const {getLoanStatus, getLoan} = loan.actions;
+export default loan.reducer;
