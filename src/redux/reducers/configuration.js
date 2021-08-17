@@ -3,8 +3,25 @@ import {createSlice} from "@reduxjs/toolkit";
 const conf = createSlice({
     name: "configurationReducer",
     initialState: {
-        configurationStatus: null,
-        configurationObject: {}
+        configurationStatus: {
+            status: null,
+            type: null,
+            message: ""
+        },
+        configurationObject: {
+            amountInterval: {
+                min:0,
+                max:0,
+                step:0,
+                defaultValue:0
+            },
+            termInterval:{
+                min:0,
+                max:0,
+                step:0,
+                defaultValue:0
+            }
+        }
     },
     reducers: {
         getConfStatus: (state, action) => {
